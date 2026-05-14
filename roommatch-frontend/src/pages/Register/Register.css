@@ -1,0 +1,200 @@
+/* ── Página ── */
+.register-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+    padding: 1.5rem;
+}
+
+/* ── Card ── */
+.register-card {
+    width: 100%;
+    max-width: 480px;
+    background: white;
+    border-radius: 18px;
+    padding: 2.5rem 3rem 2rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Cabecera ── */
+.register-header {
+    margin-bottom: 1.75rem;
+}
+
+.register-marca {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #4A7A4D;
+    text-decoration: none;
+    letter-spacing: -0.3px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.register-header h1 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #111827;
+    margin: 0;
+    letter-spacing: -0.4px;
+    text-align: center;
+}
+
+/* ── Formulario ── */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.form-group label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.form-group input {
+    padding: 0.72rem 0.9rem;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 9px;
+    font-size: 0.92rem;
+    color: #1F2937;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+    background: white;
+}
+
+.form-group input:focus {
+    border-color: #4A7A4D;
+    box-shadow: 0 0 0 3px rgba(74, 122, 77, 0.1);
+}
+
+/* Fix autorrelleno Chrome */
+.form-group input:-webkit-autofill,
+.input-password input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    -webkit-text-fill-color: #1F2937;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Input contraseña */
+.input-password {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 9px;
+    background: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-password:focus-within {
+    border-color: #4A7A4D;
+    box-shadow: 0 0 0 3px rgba(74, 122, 77, 0.1);
+}
+
+.input-password input {
+    flex: 1;
+    padding: 0.72rem 0.9rem;
+    border: none;
+    outline: none;
+    font-size: 0.92rem;
+    color: #1F2937;
+    background: transparent;
+    font-family: inherit;
+}
+
+.input-password span {
+    padding: 0 0.9rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    user-select: none;
+    color: #9CA3AF;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.input-password span:hover { color: #4A7A4D; }
+
+/* Error */
+.error-mensaje {
+    font-size: 0.83rem;
+    color: #EF4444;
+    margin: 0;
+    padding: 0.55rem 0.85rem;
+    background: #FEF2F2;
+    border-radius: 8px;
+    border-left: 3px solid #EF4444;
+}
+
+/* Botón */
+.register-form button {
+    padding: 0.82rem;
+    background: linear-gradient(135deg, #4A7A4D, #2d5e30);
+    color: white;
+    border: none;
+    border-radius: 9px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+    margin-top: 0.2rem;
+    font-family: inherit;
+    letter-spacing: 0.2px;
+}
+
+.register-form button:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.register-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Footer */
+.register-footer {
+    text-align: center;
+    margin-top: 1.25rem;
+    font-size: 0.85rem;
+    color: #6B7280;
+}
+
+.register-login-link {
+    color: #4A7A4D;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.register-login-link:hover { text-decoration: underline; }
+
+/* Volver */
+.register-volver {
+    display: block;
+    text-align: center;
+    margin-top: 0.85rem;
+    font-size: 0.8rem;
+    color: #9CA3AF;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.register-volver:hover { color: #4A7A4D; }
+
+/* ── Responsive ── */
+@media (max-width: 540px) {
+    .register-card { padding: 2rem 1.75rem 1.5rem; }
+}

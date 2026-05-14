@@ -1,0 +1,412 @@
+/* ── PÁGINA ── */
+.mis-pisos-page {
+    min-height: 100vh;
+    background: white;
+}
+
+.mis-pisos-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+}
+
+/* ── CABECERA ── */
+.mis-pisos-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.75rem;
+}
+
+.mis-pisos-header h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0 0 0.3rem;
+    letter-spacing: -0.5px;
+}
+
+.mis-pisos-header p {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Botón publicar */
+.btn-publicar {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #10B981;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 0.8rem 1.4rem;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: opacity 0.2s, transform 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn-publicar:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+/* ── TABS ── */
+.mis-pisos-tabs {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 1.75rem;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2.5px solid transparent;
+    margin-bottom: -2px;
+    padding: 0.65rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #94a3b8;
+    cursor: pointer;
+    font-family: inherit;
+    transition: color 0.18s, border-color 0.18s;
+    white-space: nowrap;
+}
+
+.tab-btn:hover { color: #475569; }
+
+.tab-btn.activo {
+    color: #10B981;
+    border-bottom-color: #10B981;
+    font-weight: 700;
+}
+
+/* ── ESTADOS ── */
+.mis-pisos-estado {
+    text-align: center;
+    color: #64748b;
+    padding: 2rem;
+}
+
+.mis-pisos-estado.error { color: #e53e3e; }
+
+/* ── VACÍO ── */
+.mis-pisos-vacio {
+    text-align: center;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.vacio-icono { font-size: 3.5rem; }
+
+.mis-pisos-vacio h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.mis-pisos-vacio p {
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+/* ── GRID ── */
+.mis-pisos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+}
+
+/* ── TARJETA ── */
+.mis-pisos-card {
+    background: white;
+    border-radius: 20px;
+    border: 1.5px solid #e8ede8;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.25s, transform 0.25s;
+}
+
+.mis-pisos-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.09);
+    transform: translateY(-3px);
+}
+
+.mis-pisos-card.inactiva .card-foto { opacity: 0.5; }
+.mis-pisos-card.inactiva h3 { color: #94a3b8; }
+.mis-pisos-card.inactiva .card-ciudad { color: #94a3b8; }
+.mis-pisos-card.inactiva .card-descripcion { color: #cbd5e1; }
+
+/* Fila superior de la tarjeta */
+.card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 0.85rem 0;
+}
+
+.card-badge-estado {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.28rem 0.85rem;
+    border-radius: 50px;
+}
+
+.card-badge-estado.activa {
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+}
+
+.card-badge-estado.inactiva {
+    background: #f8fafc;
+    color: #94a3b8;
+    border: 1px solid #e2e8f0;
+}
+
+.card-menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #94a3b8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+    line-height: 1;
+}
+
+.card-menu-btn:hover {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+/* Foto */
+.card-foto {
+    position: relative;
+    width: 100%;
+    height: 190px;
+    overflow: hidden;
+    background: #f0fdf4;
+    margin-top: 0.75rem;
+}
+
+.card-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s;
+}
+
+.mis-pisos-card:hover .card-foto img { transform: scale(1.04); }
+
+.card-foto-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+}
+
+/* Precio sobre la foto */
+.card-precio-badge {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    background: rgba(15, 23, 42, 0.82);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 800;
+    padding: 0.35rem 0.9rem;
+    border-radius: 50px;
+    letter-spacing: -0.2px;
+}
+
+/* Cuerpo */
+.card-body {
+    padding: 1rem 1.1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    flex: 1;
+}
+
+.mis-pisos-card h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-ciudad {
+    font-size: 0.82rem;
+    color: #e53e3e;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.card-descripcion {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0.1rem 0 0.2rem;
+}
+
+/* Features */
+.card-features {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.78rem;
+    color: #64748b;
+    font-weight: 500;
+    margin-top: 0.1rem;
+    flex-wrap: wrap;
+}
+
+/* Botones */
+.card-acciones {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: auto;
+    padding-top: 0.85rem;
+    border-top: 1px solid #f1f5f9;
+}
+
+.btn-ver {
+    flex: 1;
+    padding: 0.7rem;
+    background: #10B981;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    font-family: inherit;
+    transition: opacity 0.2s, transform 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+}
+
+.btn-ver:hover { opacity: 0.85; transform: translateY(-1px); }
+
+.btn-editar {
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #1a4a32;
+    background: none;
+    border: 1.5px solid #bbf7d0;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0.65rem 0.85rem;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.btn-editar:hover { background: #f0fdf4; }
+
+.btn-desactivar {
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #e53e3e;
+    background: none;
+    border: 1.5px solid #fecaca;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0.65rem 0.85rem;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.btn-desactivar:hover { background: #fff1f1; }
+
+/* ── BANNER PROMO ── */
+.promo-banner {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    background: white;
+    border: 1.5px solid #e8ede8;
+    border-radius: 20px;
+    padding: 1.5rem 1.75rem;
+    margin-top: 2rem;
+}
+
+.promo-banner-icon { font-size: 2.5rem; flex-shrink: 0; }
+
+.promo-banner-texto { flex: 1; }
+
+.promo-banner-texto h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 0.2rem;
+}
+
+.promo-banner-texto p {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin: 0;
+}
+
+.btn-promocionar {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    border: 1.5px solid #0f2318;
+    color: #0f2318;
+    border-radius: 10px;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn-promocionar:hover {
+    background: #0f2318;
+    color: white;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+    .mis-pisos-inner { padding: 1.5rem 1rem 3rem; }
+    .mis-pisos-header { flex-direction: column; gap: 1rem; }
+    .mis-pisos-grid { grid-template-columns: 1fr; }
+    .promo-banner { flex-direction: column; text-align: center; }
+}

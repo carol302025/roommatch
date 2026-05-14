@@ -1,0 +1,320 @@
+/* ── Barra superior propia ── */
+.mensajes-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 56px;
+    background: #4A7A4D;
+    flex-shrink: 0;
+}
+
+.mensajes-topbar-izq {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.mensajes-topbar-volver {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: color 0.2s;
+    padding: 0;
+}
+
+.mensajes-topbar-volver:hover { color: white; }
+
+.mensajes-topbar-logo {
+    font-size: 1rem;
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+    letter-spacing: -0.3px;
+}
+
+.mensajes-topbar-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.mensajes-topbar-link {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.mensajes-topbar-link:hover { color: white; }
+
+/* ── Contenedor principal: dos columnas ── */
+.mensajes-page {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    height: calc(100vh - 56px);
+    max-width: 1100px;
+    margin: 0 auto;
+    border: 1px solid #E5E7EB;
+    border-top: none;
+    overflow: hidden;
+}
+
+.mensajes-cargando {
+    padding: 2rem;
+    color: #6B7280;
+}
+
+/* ── Columna izquierda ── */
+.mensajes-lista {
+    border-right: 1px solid #E5E7EB;
+    overflow-y: auto;
+    background: #fff;
+}
+
+.mensajes-titulo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1F2937;
+    padding: 1.25rem 1rem;
+    border-bottom: 1px solid #E5E7EB;
+    margin: 0;
+}
+
+.mensajes-vacio {
+    padding: 1.5rem 1rem;
+    color: #6B7280;
+    font-size: 0.9rem;
+}
+
+/* Item de conversación */
+.conv-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid #F3F4F6;
+    transition: background 0.15s;
+}
+
+.conv-item:hover {
+    background: #F9FAFB;
+}
+
+.conv-item.activo {
+    background: #F0FDF4;
+    border-left: 3px solid #10B981;
+}
+
+.conv-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #10B981;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.conv-info {
+    flex: 1;
+    min-width: 0; /* permite que el texto se corte con ellipsis */
+}
+
+.conv-nombre {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 2px;
+}
+
+.conv-preview {
+    font-size: 0.8rem;
+    color: #6B7280;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── Columna derecha: chat ── */
+.mensajes-chat {
+    display: flex;
+    flex-direction: column;
+    background: #F9FAFB;
+    overflow: hidden;
+}
+
+/* Estado vacío (sin conversación seleccionada) */
+.chat-placeholder {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #9CA3AF;
+    gap: 0.75rem;
+}
+
+.chat-placeholder span {
+    font-size: 3rem;
+}
+
+.chat-placeholder p {
+    font-size: 0.95rem;
+}
+
+/* Cabecera del chat */
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: #fff;
+    border-bottom: 1px solid #E5E7EB;
+    flex-shrink: 0;
+}
+
+.chat-header-nombre {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1F2937;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.chat-header-nombre:hover { color: #4A7A4D; text-decoration: underline; }
+
+/* Área de burbujas */
+.chat-burbujas {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.chat-sin-mensajes {
+    text-align: center;
+    color: #9CA3AF;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+}
+
+/* Burbuja individual */
+.burbuja {
+    max-width: 65%;
+    padding: 0.6rem 0.9rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.burbuja p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.burbuja-hora {
+    font-size: 0.7rem;
+    opacity: 0.6;
+    align-self: flex-end;
+}
+
+/* Mis mensajes — derecha, verde */
+.burbuja.propio {
+    align-self: flex-end;
+    background: #10B981;
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+/* Mensajes del otro — izquierda, blanco */
+.burbuja.ajeno {
+    align-self: flex-start;
+    background: #fff;
+    color: #1F2937;
+    border: 1px solid #E5E7EB;
+    border-bottom-left-radius: 4px;
+}
+
+/* Input para escribir */
+.chat-input {
+    display: flex;
+    gap: 0.6rem;
+    padding: 1rem 1.25rem;
+    background: #fff;
+    border-top: 1px solid #E5E7EB;
+    flex-shrink: 0;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 24px;
+    font-size: 0.92rem;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.chat-input input:focus {
+    border-color: #10B981;
+}
+
+.chat-input button {
+    padding: 0.7rem 1.4rem;
+    background: #10B981;
+    color: white;
+    border: none;
+    border-radius: 24px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.chat-input button:hover:not(:disabled) {
+    background: #059669;
+}
+
+.chat-input button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+    .mensajes-page {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .mensajes-lista {
+        border-right: none;
+        border-bottom: 1px solid #E5E7EB;
+        max-height: 250px;
+    }
+
+    .mensajes-chat {
+        height: 70vh;
+    }
+}

@@ -1,0 +1,385 @@
+.buscar-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+}
+
+/* ── PANEL DE FILTROS ── */
+.filtros-panel {
+    background: white;
+    border-radius: 24px;
+    padding: 2rem 2rem 1.75rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    margin-bottom: 2.5rem;
+}
+
+.filtros-panel h2 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #10B981;
+    display: inline-block;
+}
+
+/* Fila de tarjetas */
+.filtros-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.filtro-card {
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.filtro-card:focus-within {
+    border-color: #10B981;
+    box-shadow: 0 0 0 3px rgba(16,185,129,0.1);
+}
+
+.filtro-card-icono {
+    font-size: 1.3rem;
+    margin-bottom: 0.15rem;
+}
+
+.filtro-card label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filtro-card-valor {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #10B981;
+}
+
+.filtro-input {
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    color: #1e293b;
+    font-family: inherit;
+    background: transparent;
+    padding: 0;
+}
+
+.filtro-input::placeholder {
+    color: #94a3b8;
+}
+
+.filtro-select {
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    color: #1e293b;
+    font-family: inherit;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+/* Slider de presupuesto */
+.presupuesto-slider {
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    accent-color: #10B981;
+    cursor: pointer;
+    margin-top: 0.25rem;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    color: #94a3b8;
+    margin-top: 0.1rem;
+}
+
+/* ── FILA DE TOGGLES ── */
+.filtros-toggles {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1.25rem 0;
+    border-top: 1px solid #f1f5f9;
+    border-bottom: 1px solid #f1f5f9;
+    margin-bottom: 1.5rem;
+}
+
+.toggle-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    flex: 1;
+    min-width: 180px;
+    user-select: none;
+}
+
+.toggle-icono {
+    font-size: 1.1rem;
+}
+
+.toggle-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    flex: 1;
+}
+
+/* Switch CSS */
+.toggle-switch {
+    width: 42px;
+    height: 24px;
+    background: #e2e8f0;
+    border-radius: 50px;
+    position: relative;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+.toggle-switch.activo {
+    background: #10B981;
+}
+
+.toggle-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.toggle-switch.activo .toggle-thumb {
+    transform: translateX(18px);
+}
+
+/* Botón buscar */
+.filtros-accion {
+    text-align: center;
+}
+
+.filtros-aviso {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: #6B7280;
+}
+
+.filtros-aviso a {
+    color: #4A7A4D;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.filtros-aviso a:hover { text-decoration: underline; }
+
+.btn-ver-compatibles {
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: white;
+    border: none;
+    padding: 0.9rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(16,185,129,0.3);
+}
+
+.btn-ver-compatibles:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(16,185,129,0.4);
+}
+
+/* ── ESTADOS ── */
+.buscar-estado {
+    text-align: center;
+    padding: 2.5rem;
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+.buscar-estado.error { color: #e53e3e; }
+
+.buscar-vacio {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #64748b;
+}
+
+.buscar-vacio span {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.buscar-vacio p {
+    font-size: 1rem;
+}
+
+/* ── GRID DE CARDS ── */
+.habitaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.habitacion-card {
+    border-radius: 18px;
+    overflow: hidden;
+    background: white;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.25s, box-shadow 0.25s;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    border: 1px solid #f1f5f9;
+}
+
+.habitacion-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.13);
+    border-color: #d1fae5;
+}
+
+.card-foto {
+    position: relative;
+    width: 100%;
+    height: 170px;
+    background: #f1f5f9;
+    overflow: hidden;
+}
+
+.card-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.habitacion-card:hover .card-foto img {
+    transform: scale(1.06);
+}
+
+.card-foto-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    font-size: 2.5rem;
+}
+
+.card-foto-placeholder::after {
+    content: 'Sin foto';
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #86efac;
+    letter-spacing: 0.5px;
+}
+
+.card-disponible {
+    position: absolute;
+    top: 0.65rem;
+    left: 0.65rem;
+    background: #10B981;
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.28rem 0.7rem;
+    border-radius: 50px;
+}
+
+.card-info {
+    padding: 1rem 1.1rem 1.1rem;
+}
+
+.card-info h3 {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-ciudad {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 0.6rem;
+}
+
+.card-precio {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #059669;
+}
+
+.precio-mes {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #94a3b8;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+    .habitaciones-grid { grid-template-columns: repeat(3, 1fr); }
+    .filtros-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .habitaciones-grid { grid-template-columns: repeat(2, 1fr); }
+    .filtros-cards { grid-template-columns: 1fr; }
+    .filtros-toggles { flex-direction: column; }
+}
+
+@media (max-width: 480px) {
+    .habitaciones-grid { grid-template-columns: 1fr; }
+}
+
+.btn-heart {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    transition: transform 0.15s;
+}
+
+.btn-heart:hover { transform: scale(1.15); }

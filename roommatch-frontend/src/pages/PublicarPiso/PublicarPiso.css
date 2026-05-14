@@ -1,0 +1,559 @@
+/* ── Subida de foto ── */
+.foto-upload-area {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    border: 2px dashed #d1fae5;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    background: #f0fdf4;
+}
+
+.foto-upload-area:hover {
+    border-color: #10B981;
+}
+
+.foto-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: #6b8c7a;
+    font-weight: 500;
+    gap: 0.5rem;
+}
+
+.foto-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.foto-input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.foto-estado {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin: 0.35rem 0 0;
+}
+
+.foto-ok {
+    font-size: 0.8rem;
+    color: #059669;
+    font-weight: 600;
+    margin: 0.35rem 0 0;
+}
+
+/* ── Layout principal ── */
+.publicar-page {
+    min-height: 100vh;
+    display: flex;
+}
+
+/* ── Panel izquierdo ── */
+.publicar-panel-izq {
+    width: 420px;
+    min-height: 100vh;
+    background-image: url('../../assets/habitacion.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Overlay oscuro sobre la foto */
+.publicar-panel-izq::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0.4) 100%);
+    z-index: 0;
+}
+
+.panel-contenido {
+    position: relative;
+    z-index: 1;
+    color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.5rem 2.5rem;
+    min-height: 100vh;
+    gap: 1.25rem;
+}
+
+.panel-top {
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.panel-logo {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+    letter-spacing: -0.3px;
+}
+
+.panel-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.35rem 0.9rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.panel-contenido h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.08;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.titulo-verde {
+    color: #4ade80;
+}
+
+.panel-frase {
+    margin: 0;
+}
+
+.panel-frase p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.panel-frase-sep {
+    width: 32px;
+    height: 2px;
+    background: rgba(255,255,255,0.3);
+    margin: 0.75rem 0;
+    border-radius: 2px;
+}
+
+.panel-beneficios {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.panel-beneficios li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+}
+
+.beneficio-icono {
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+}
+
+.panel-beneficios li div strong {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.2rem;
+}
+
+.panel-beneficios li div span {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.5;
+}
+
+/* Social proof */
+.panel-social {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1.1rem;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50px;
+    margin-top: 0.5rem;
+}
+
+.panel-avatares {
+    display: flex;
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4ade80, #16a34a);
+    border: 2px solid rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: white;
+    margin-left: -10px;
+}
+
+.avatar:first-child { margin-left: 0; background: linear-gradient(135deg, #60a5fa, #2563eb); }
+.avatar:nth-child(2) { background: linear-gradient(135deg, #f472b6, #be185d); }
+.avatar:nth-child(3) { background: linear-gradient(135deg, #fb923c, #c2410c); }
+.avatar:nth-child(4) { background: rgba(255,255,255,0.2); }
+
+.panel-social p {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.panel-social p strong {
+    color: white;
+    font-weight: 700;
+}
+
+/* Botón volver */
+.publicar-volver {
+    align-self: flex-start;
+    background: none;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.18s;
+    margin-bottom: 0.5rem;
+}
+
+.publicar-volver:hover {
+    border-color: #4A7A4D;
+    color: #4A7A4D;
+}
+
+/* ── Panel derecho (formulario) ── */
+.publicar-card {
+    flex: 1;
+    background: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3rem 2rem;
+    overflow-y: auto;
+}
+
+/* ── Formulario ── */
+.publicar-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Cabecera del formulario */
+.form-cabecera {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.form-cabecera h2 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 0.2rem;
+    letter-spacing: -0.3px;
+}
+
+.form-cabecera p {
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+/* Bloque de campos opcionales */
+.form-opcionales {
+    background: #f8fafc;
+    border: 1.5px dashed #e2e8f0;
+    border-radius: 12px;
+    padding: 1rem 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.opcionales-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.publicar-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.publicar-form label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #475569;
+}
+
+.publicar-form input,
+.publicar-form textarea,
+.publicar-form select {
+    padding: 0.8rem 1rem;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: var(--color-texto);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+    background: white;
+    width: 100%;
+}
+
+.publicar-form input:focus,
+.publicar-form textarea:focus,
+.publicar-form select:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(26, 74, 50, 0.08);
+}
+
+.publicar-form textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+/* Fila de dos campos */
+.publicar-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+}
+
+/* Label "Paso X de 2" */
+.wizard-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #94a3b8;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Wizard */
+.wizard-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+    padding: 0.85rem 1.75rem;
+    background: white;
+    border-radius: 50px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+    width: fit-content;
+    align-self: center;
+    border: 1px solid #e8edf2;
+}
+
+.wizard-step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #94a3b8;
+    transition: color 0.3s;
+}
+
+.wizard-step span {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 800;
+    transition: all 0.3s;
+}
+
+.wizard-step.activo {
+    color: var(--color-primario);
+}
+
+.wizard-step.activo span {
+    background: var(--color-primario);
+    color: white;
+    box-shadow: 0 4px 12px rgba(26, 74, 50, 0.3);
+}
+
+.wizard-linea {
+    flex: 1;
+    height: 2px;
+    background: #e2e8f0;
+    max-width: 80px;
+    border-radius: 2px;
+}
+
+/* Botón principal */
+.publicar-form button[type="submit"] {
+    padding: 0.9rem;
+    background: linear-gradient(135deg, #1a4a32, #2d7a4f);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 0.5rem;
+}
+
+.publicar-form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26, 74, 50, 0.35);
+}
+
+.publicar-form button[type="submit"]:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Toggle preferencias */
+.preferencia-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1.5px solid #e2e8f0;
+    transition: border-color 0.2s;
+}
+
+.preferencia-toggle:has(input:checked) {
+    border-color: var(--color-primario);
+    background: rgba(26, 74, 50, 0.04);
+}
+
+.preferencia-toggle label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-texto);
+}
+
+.preferencia-toggle input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--color-primario);
+    cursor: pointer;
+    border: none;
+    padding: 0;
+}
+
+/* Botones paso 2 */
+.publicar-botones {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.publicar-botones button {
+    flex: 1;
+    margin-top: 0;
+}
+
+.btn-secundario {
+    padding: 0.9rem !important;
+    background: transparent !important;
+    border: 1.5px solid #e2e8f0 !important;
+    color: #64748b !important;
+    border-radius: 12px !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+}
+
+.btn-secundario:hover {
+    border-color: var(--color-primario) !important;
+    color: var(--color-primario) !important;
+}
+
+/* Error */
+.error-mensaje {
+    color: #e53e3e;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .publicar-panel-izq {
+        display: none;
+    }
+    .publicar-card {
+        padding: 2rem 1.25rem;
+    }
+}
