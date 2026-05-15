@@ -4,24 +4,26 @@ from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 import os
 
-load_dotenv()  # carga el archivo .env
+load_dotenv()
 
-DATABASE_URL = os.getenv("DATABASE_URL")  # lee la URL completa del .env
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-# Creamos la clase de sesion para interactuar con la base de datos
+if not DATABASE_URL:
+    raise ValueError(" DATABASE_URL no está definida en las variables de entorno")
+
 engine = create_engine(
     DATABASE_URL,
     pool_pre_ping=True,
     connect_args={"connect_timeout": 10},
+    pool_size=5,
+    max_overflow=10,
+    pool_recycle=300,  # recicla conexiones cada 5 min, importante para pooler
 )
 
-#Creamos una clase de sesion para interactuar con la base de datos(para las consultas)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# Creamos la clase base para los modelos de la base de datos
 Base = declarative_base()
 
-# Función para obtener una sesión de la base de datos(abre una nueva sesión y la cierra después de cada petición)
 def get_db():
     db = SessionLocal()
     try:

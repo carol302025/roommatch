@@ -16,8 +16,11 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# Base.metadata.create_all() es suficiente.
-Base.metadata.create_all(bind=engine)
+try:
+    Base.metadata.create_all(bind=engine)
+    print("✅ Base de datos conectada correctamente")
+except Exception as e:
+    print(f"⚠️ No se pudo conectar a la BD al arrancar: {e}")
 
 
 # ----------------------------------------------------------
