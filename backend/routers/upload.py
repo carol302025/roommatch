@@ -28,4 +28,6 @@ async def subir_foto(file: UploadFile = File(...)):
     with open(ruta, "wb") as f:
         f.write(contenido)
 
-    return JSONResponse({"url": f"http://127.0.0.1:8000/uploads/{nombre}"})
+    domain = os.getenv("RAILWAY_PUBLIC_DOMAIN")
+    base_url = f"https://{domain}" if domain else "http://127.0.0.1:8000"
+    return JSONResponse({"url": f"{base_url}/uploads/{nombre}"})
