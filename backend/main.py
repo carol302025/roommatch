@@ -20,7 +20,7 @@ try:
     Base.metadata.create_all(bind=engine)
     print("✅ Base de datos conectada correctamente")
 except Exception as e:
-    print(f"⚠️ No se pudo conectar a la BD al arrancar: {e}")
+    print(f" No se pudo conectar a la BD al arrancar: {e}")
 
 
 # ----------------------------------------------------------
@@ -28,12 +28,16 @@ except Exception as e:
 # ----------------------------------------------------------
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://roommatch.tech",
+        "https://www.roommatch.tech",
+        "https://roommatch-plum.vercel.app",
+        "http://localhost:3000",
+    ],
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 # ----------------------------------------------------------
 # Endpoints raiz y healthcheck
