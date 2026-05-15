@@ -9,7 +9,11 @@ load_dotenv()  # carga el archivo .env
 DATABASE_URL = os.getenv("DATABASE_URL")  # lee la URL completa del .env
 
 # Creamos la clase de sesion para interactuar con la base de datos
-engine = create_engine(DATABASE_URL, pool_pre_ping=True)
+engine = create_engine(
+    DATABASE_URL,
+    pool_pre_ping=True,
+    connect_args={"connect_timeout": 10},
+)
 
 #Creamos una clase de sesion para interactuar con la base de datos(para las consultas)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
