@@ -109,14 +109,14 @@
 
 .conv-item.activo {
     background: #F0FDF4;
-    border-left: 3px solid #10B981;
+    border-left: 3px solid #4A7A4D;
 }
 
 .conv-avatar {
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background: #10B981;
+    background: #4A7A4D;
     color: white;
     font-weight: 700;
     font-size: 1rem;
@@ -241,7 +241,7 @@
 /* Mis mensajes — derecha, verde */
 .burbuja.propio {
     align-self: flex-end;
-    background: #10B981;
+    background: #4A7A4D;
     color: white;
     border-bottom-right-radius: 4px;
 }
@@ -277,12 +277,12 @@
 }
 
 .chat-input input:focus {
-    border-color: #10B981;
+    border-color: #4A7A4D;
 }
 
 .chat-input button {
     padding: 0.7rem 1.4rem;
-    background: #10B981;
+    background: #4A7A4D;
     color: white;
     border: none;
     border-radius: 24px;

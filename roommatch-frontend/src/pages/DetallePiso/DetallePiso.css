@@ -78,7 +78,7 @@
     transition: color 0.2s;
 }
 
-.detalle-volver:hover { color: #10B981; }
+.detalle-volver:hover { color: #4A7A4D; }
 
 /* Foto */
 .detalle-foto {
@@ -234,7 +234,7 @@
 .btn-contactar {
     width: 100%;
     padding: 0.9rem;
-    background: linear-gradient(135deg, #10B981, #059669);
+    background: linear-gradient(135deg, #4A7A4D, #059669);
     color: white;
     border: none;
     border-radius: 12px;
@@ -312,7 +312,7 @@
 }
 
 .form-mensaje-textarea:focus {
-    border-color: #10B981;
+    border-color: #4A7A4D;
     box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
     background: white;
 }
@@ -325,7 +325,7 @@
     font-weight: 700;
     font-size: 0.95rem;
     cursor: pointer;
-    background: linear-gradient(135deg, #10B981, #059669);
+    background: linear-gradient(135deg, #4A7A4D, #059669);
     color: white;
     transition: opacity 0.2s, transform 0.15s;
     font-family: inherit;

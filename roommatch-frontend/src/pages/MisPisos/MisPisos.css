@@ -37,7 +37,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: #10B981;
+    background: #4A7A4D;
     color: white;
     border: none;
     border-radius: 12px;
@@ -83,8 +83,8 @@
 .tab-btn:hover { color: #475569; }
 
 .tab-btn.activo {
-    color: #10B981;
-    border-bottom-color: #10B981;
+    color: #4A7A4D;
+    border-bottom-color: #4A7A4D;
     font-weight: 700;
 }
 
@@ -165,7 +165,7 @@
 
 .card-badge-estado.activa {
     background: #f0fdf4;
-    color: #16a34a;
+    color: #4A7A4D;
     border: 1px solid #bbf7d0;
 }
 
@@ -300,7 +300,7 @@
 .btn-ver {
     flex: 1;
     padding: 0.7rem;
-    background: #10B981;
+    background: #4A7A4D;
     border: none;
     border-radius: 10px;
     font-size: 0.85rem;

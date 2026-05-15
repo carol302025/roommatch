@@ -122,7 +122,7 @@
 .form-group input[type="text"]:focus,
 .form-group input[type="number"]:focus,
 .form-group textarea:focus {
-    border-color: #10B981;
+    border-color: #4A7A4D;
     box-shadow: 0 0 0 3px rgba(16,185,129,0.1);
 }
 
@@ -140,7 +140,7 @@
 }
 
 .form-group select:focus {
-    border-color: #10B981;
+    border-color: #4A7A4D;
     box-shadow: 0 0 0 3px rgba(16,185,129,0.1);
 }
 
@@ -159,7 +159,7 @@
     background: #FAFAFA;
 }
 
-.foto-upload-area:hover { border-color: #10B981; }
+.foto-upload-area:hover { border-color: #4A7A4D; }
 
 .foto-placeholder {
     font-size: 0.95rem;
@@ -185,7 +185,7 @@
 }
 
 .foto-estado { font-size: 0.83rem; color: #6B7280; margin: 0.3rem 0 0; }
-.foto-ok     { font-size: 0.83rem; color: #10B981; font-weight: 600; margin: 0.3rem 0 0; }
+.foto-ok     { font-size: 0.83rem; color: #4A7A4D; font-weight: 600; margin: 0.3rem 0 0; }
 
 /* ── Toggles ── */
 .preferencias-grid {
@@ -242,7 +242,7 @@
 }
 
 .toggle-label input:checked ~ .toggle-slider {
-    background: #10B981;
+    background: #4A7A4D;
 }
 
 .toggle-label input:checked ~ .toggle-slider::after {
@@ -264,7 +264,7 @@
     font-size: 0.87rem;
     color: #059669;
     background: #ECFDF5;
-    border-left: 3px solid #10B981;
+    border-left: 3px solid #4A7A4D;
     border-radius: 8px;
     padding: 0.65rem 1rem;
     margin: 0;
@@ -298,7 +298,7 @@
 
 .btn-guardar {
     padding: 0.8rem 2rem;
-    background: linear-gradient(135deg, #10B981, #059669);
+    background: linear-gradient(135deg, #4A7A4D, #059669);
     color: white;
     border: none;
     border-radius: 10px;

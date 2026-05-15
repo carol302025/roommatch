@@ -119,7 +119,7 @@ function Home() {
                 </header>
 
                 <section className="hero">
-                    <h1>Encuentra un hogar<br />que encaje contigo</h1>
+                    <h1>Encuentra tu compañero<br />de piso ideal</h1>
                     <form className="hero-searchbar" onSubmit={handleBuscar}>
                         <div className="searchbar-campo">
                             <span>🔍</span>
@@ -163,6 +163,9 @@ function Home() {
 
             {/* ── CONTENIDO ── */}
             <div className="home-content">
+
+                {/* Tagline */}
+                <p className="home-tagline">RoomMatch te conecta con personas que comparten tu estilo de vida, intereses y presupuesto. El hogar perfecto empieza con la compañía perfecta.</p>
 
                 {/* Chips de ciudad */}
                 <div className="ciudad-chips">
@@ -307,21 +310,26 @@ function Home() {
                 <section className="home-como" id="como-funciona">
                     <div className="como-header">
                         <h2>Cómo funciona</h2>
-                        <p>Tres pasos para encontrar tu próximo hogar</p>
+                        <p>Cuatro pasos para encontrar tu próximo hogar</p>
                     </div>
                     <div className="como-pasos">
                         <div className="como-paso paso-azul">
                             <div className="paso-top"><span className="paso-num">01</span><span className="paso-emoji">🔍</span></div>
                             <h3>Busca</h3>
-                            <p>Filtra por ciudad, precio y tipo de habitación hasta encontrar la que encaje contigo.</p>
+                            <p>Filtra por ciudad y precio hasta encontrar opciones que se ajusten a lo que necesitas.</p>
+                        </div>
+                        <div className="como-paso paso-verde">
+                            <div className="paso-top"><span className="paso-num">02</span><span className="paso-emoji">💚</span></div>
+                            <h3>Haz match</h3>
+                            <p>Nuestro algoritmo calcula tu % de compatibilidad con cada habitación según tu estilo de vida, hábitos y preferencias.</p>
                         </div>
                         <div className="como-paso paso-naranja">
-                            <div className="paso-top"><span className="paso-num">02</span><span className="paso-emoji">💬</span></div>
+                            <div className="paso-top"><span className="paso-num">03</span><span className="paso-emoji">💬</span></div>
                             <h3>Conecta</h3>
                             <p>Habla directamente con el propietario. Sin intermediarios, sin comisiones.</p>
                         </div>
-                        <div className="como-paso paso-verde">
-                            <div className="paso-top"><span className="paso-num">03</span><span className="paso-emoji">🏡</span></div>
+                        <div className="como-paso paso-morado">
+                            <div className="paso-top"><span className="paso-num">04</span><span className="paso-emoji">🏡</span></div>
                             <h3>Vive</h3>
                             <p>Empieza una nueva etapa en un hogar que elegiste tú, con personas que elegiste tú.</p>
                         </div>

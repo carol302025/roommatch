@@ -30,8 +30,8 @@ body {
   align-items: center;
   gap: 6px;
   background: #f0fdf4;
-  border: 1.5px solid #10B981;
-  color: #10B981;
+  border: 1.5px solid #4A7A4D;
+  color: #4A7A4D;
   font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
@@ -44,7 +44,7 @@ body {
 }
 
 .btn-volver:hover {
-  background: #10B981;
+  background: #4A7A4D;
   color: white;
   transform: translateX(-2px);
 }
