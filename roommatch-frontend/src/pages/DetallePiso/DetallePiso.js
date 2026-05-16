@@ -116,6 +116,21 @@ function DetallePiso() {
                                         👥 {pref.numero_companeros} compañeros
                                     </span>
                                 )}
+                                {pref.acepta_visitas !== null && pref.acepta_visitas !== undefined && (
+                                    <span className={`badge ${pref.acepta_visitas ? 'ok' : 'no'}`}>
+                                        {pref.acepta_visitas ? '✓' : '✗'} Visitas
+                                    </span>
+                                )}
+                                {pref.horario_casa && (
+                                    <span className="badge neutro">
+                                        🕐 {pref.horario_casa.charAt(0).toUpperCase() + pref.horario_casa.slice(1)}
+                                    </span>
+                                )}
+                                {pref.perfil_buscado && (
+                                    <span className="badge neutro">
+                                        👤 {pref.perfil_buscado.charAt(0).toUpperCase() + pref.perfil_buscado.slice(1)}
+                                    </span>
+                                )}
                             </div>
                         </div>
                     )}
