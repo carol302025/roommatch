@@ -86,7 +86,9 @@ function Home() {
 
                 <header className="home-header">
                     <Link to="/" className="home-header-logo">
-                        <img src={logo} alt="RoomMatch" />
+                        <span className="home-logo-pill">
+                            <img src={logo} alt="RoomMatch" />
+                        </span>
                     </Link>
                     <nav className="home-header-nav">
                         <Link to="/buscar-pisos" className="home-nav-link">Explorar</Link>
