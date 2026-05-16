@@ -141,6 +141,9 @@ function DetallePiso() {
                 <div className="detalle-der">
                     <div className="detalle-card-precio">
                         <p className="detalle-precio">{habitacion.precio} €<span>/mes</span></p>
+                        {habitacion.fecha_disponible && (
+                            <p className="gastos-tag">📅 Disponible desde: {new Date(habitacion.fecha_disponible).toLocaleDateString('es-ES')}</p>
+                        )}
                         {pref?.gastos_incluidos && (
                             <p className="gastos-tag">Gastos incluidos</p>
                         )}

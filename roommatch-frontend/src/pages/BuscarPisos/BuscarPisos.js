@@ -18,6 +18,7 @@ function BuscarPisos() {
     // Filtros
     const [presupuestoMax, setPresupuestoMax] = useState(searchParams.get('precio_max') || 800);
     const [ciudad, setCiudad] = useState(searchParams.get('ciudad') || '');
+    const [fecha, setFecha] = useState(searchParams.get('fecha') || '');
     const [genero, setGenero] = useState('');
     const [tipoInquilino, setTipoInquilino] = useState('');
     const [fumador, setFumador] = useState(false);
@@ -56,6 +57,7 @@ function BuscarPisos() {
             if (ciudad.trim())     filtros.ciudad         = ciudad.trim();
             if (presupuestoMax)    filtros.precio_max     = presupuestoMax;
             if (tipoInquilino)     filtros.tipo_inquilino = tipoInquilino;
+            if (fecha)             filtros.fecha          = fecha;
 
             const datos = await getHabitaciones(filtros);
             setHabitaciones(Array.isArray(datos) ? datos : []);
@@ -115,6 +117,17 @@ function BuscarPisos() {
                             placeholder="Barcelona"
                             value={ciudad}
                             onChange={(e) => setCiudad(e.target.value)}
+                            className="filtro-input"
+                        />
+                    </div>
+
+                    <div className="filtro-card">
+                        <span className="filtro-card-icono">📅</span>
+                        <label>Fecha de entrada</label>
+                        <input
+                            type="date"
+                            value={fecha}
+                            onChange={(e) => setFecha(e.target.value)}
                             className="filtro-input"
                         />
                     </div>

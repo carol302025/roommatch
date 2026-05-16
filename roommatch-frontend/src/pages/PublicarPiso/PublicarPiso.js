@@ -37,6 +37,8 @@ function PublicarPiso() {
     const [fotoPreview, setFotoPreview] = useState(null);
     const [subiendoFoto, setSubiendoFoto] = useState(false);
 
+    const [fechaDisponible, setFechaDisponible] = useState('');
+
     // Paso 2 — preferencias de la casa
     const [mascotas, setMascotas] = useState(false);
     const [fumar, setFumar] = useState(false);
@@ -80,7 +82,7 @@ function PublicarPiso() {
         setError(null);
 
         try {
-            const datos = { titulo, descripcion, ciudad, direccion, precio: parseFloat(precio), foto_url: fotoUrl || null };
+            const datos = { titulo, descripcion, ciudad, direccion, precio: parseFloat(precio), foto_url: fotoUrl || null, fecha_disponible: fechaDisponible || null };
             const respuesta = await crearHabitacion(datos, token);
 
             if (respuesta.id) {
@@ -248,6 +250,15 @@ function PublicarPiso() {
                                     onChange={(e) => setPrecio(e.target.value)}
                                     min="0"
                                     required
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Disponible desde</label>
+                                <input
+                                    type="date"
+                                    value={fechaDisponible}
+                                    onChange={(e) => setFechaDisponible(e.target.value)}
                                 />
                             </div>
                         </div>
