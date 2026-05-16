@@ -10,7 +10,7 @@ Se mantiene separacion entre:
 from pydantic import BaseModel, EmailStr, Field, ConfigDict
 from typing import Optional
 from typing_extensions import Annotated
-from datetime import datetime
+from datetime import datetime, date
 from enum import Enum
 
 
@@ -198,6 +198,7 @@ class HabitacionCrear(BaseModel):
     foto_url: Optional[str] = None
     lat: Optional[float] = None
     lon: Optional[float] = None
+    fecha_disponible: Optional[date] = None
 
 
 class HabitacionActualizar(BaseModel):
@@ -211,6 +212,7 @@ class HabitacionActualizar(BaseModel):
     lat: Optional[float] = None
     lon: Optional[float] = None
     disponible: Optional[bool] = None
+    fecha_disponible: Optional[date] = None
 
 
 class HabitacionRespuesta(BaseModel):
@@ -224,6 +226,7 @@ class HabitacionRespuesta(BaseModel):
     lat: Optional[float] = None
     lon: Optional[float] = None
     disponible: bool
+    fecha_disponible: Optional[date] = None
     created_at: datetime
     propietario_id: int
     preferencias: Optional[PreferenciasCasaResponse] = None

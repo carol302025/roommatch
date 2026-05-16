@@ -15,7 +15,8 @@ Endpoints privados (requieren JWT):
 from typing import Optional, List
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.orm import Session
-from sqlalchemy import and_
+from sqlalchemy import and_, or_
+from datetime import date
 
 from database import get_db
 from models import Habitacion, Usuario, RolUsuario, PreferenciasCasa, PerfilInquilino
@@ -36,17 +37,14 @@ router = APIRouter(prefix="/habitaciones", tags=["Habitaciones"])
 # ---------------------------------------------------------------------------
 @router.get("", response_model=List[HabitacionRespuesta])
 def listar_habitaciones(
-    ciudad: Optional[str] = Query(None, description="Filtrar por ciudad"),
-    precio_min: Optional[float] = Query(None, ge=0, description="Precio mínimo €"),
-    precio_max: Optional[float] = Query(None, gt=0, description="Precio máximo €"),
-    tipo_inquilino: Optional[str] = Query(None, description="Filtrar por tipo de inquilino"),
+    ciudad: Optional[str] = Query(None),
+    precio_min: Optional[float] = Query(None, ge=0),
+    precio_max: Optional[float] = Query(None, gt=0),
+    tipo_inquilino: Optional[str] = Query(None),
+    fecha: Optional[date] = Query(None, description="Fecha de entrada deseada (YYYY-MM-DD)"),
     db: Session = Depends(get_db),
 ):
-    """
-    Devuelve todas las habitaciones activas.
-    Accesible sin login — así los inquilinos pueden explorar antes de registrarse.
-    """
-    query = db.query(Habitacion).filter(Habitacion.disponible == True) 
+    query = db.query(Habitacion).filter(Habitacion.disponible == True)
 
     if ciudad:
         query = query.filter(Habitacion.ciudad.ilike(f"%{ciudad}%"))
@@ -55,9 +53,13 @@ def listar_habitaciones(
     if precio_max is not None:
         query = query.filter(Habitacion.precio <= precio_max)
     if tipo_inquilino:
-        # Join con PreferenciasCasa para filtrar por tipo de inquilino
         query = query.join(PreferenciasCasa, PreferenciasCasa.habitacion_id == Habitacion.id)\
                      .filter(PreferenciasCasa.tipo_inquilino == tipo_inquilino)
+    if fecha is not None:
+        # Mostrar habitaciones sin fecha definida (disponibles ya) o cuya fecha_disponible <= fecha buscada
+        query = query.filter(
+            or_(Habitacion.fecha_disponible == None, Habitacion.fecha_disponible <= fecha)
+        )
 
 
     # Orden: más recientes primero
@@ -105,7 +107,10 @@ def get_matches(
     if not tiene_preferencias:
         return []
 
-    habitaciones = db.query(Habitacion).filter(Habitacion.disponible == True).all()
+    query = db.query(Habitacion).filter(Habitacion.disponible == True)
+    if preferencias and preferencias.ciudad_preferida:
+        query = query.filter(Habitacion.ciudad.ilike(f"%{preferencias.ciudad_preferida}%"))
+    habitaciones = query.all()
 
     resultado = []
     for h in habitaciones:
@@ -186,6 +191,12 @@ def _calcular_score(habitacion, perfil, preferencias):
         maximo += 5
         if pref_casa and pref_casa.mascotas_permitidas:
             puntos += 5
+
+    # Gastos incluidos (10 pts)
+    if preferencias and preferencias.gastos_incluidos:
+        maximo += 10
+        if pref_casa and pref_casa.gastos_incluidos:
+            puntos += 10
 
     if maximo == 0:
         return 70

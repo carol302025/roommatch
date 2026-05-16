@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, Float, ForeignKey, Text, Numeric, TIMESTAMP, Enum, UniqueConstraint
+from sqlalchemy import Column, Integer, String, Boolean, Float, ForeignKey, Text, Numeric, TIMESTAMP, Enum, UniqueConstraint, Date
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from database import Base
@@ -112,9 +112,10 @@ class Habitacion(Base):
     foto_url       = Column(String, nullable=True)
     lat            = Column(Float, nullable=True)
     lon            = Column(Float, nullable=True)
-    disponible     = Column(Boolean, default=True)
-    created_at     = Column(TIMESTAMP, server_default=func.now())
-    propietario_id = Column(Integer, ForeignKey("usuario.id", ondelete="CASCADE"), nullable=False)
+    disponible        = Column(Boolean, default=True)
+    fecha_disponible  = Column(Date, nullable=True)
+    created_at        = Column(TIMESTAMP, server_default=func.now())
+    propietario_id    = Column(Integer, ForeignKey("usuario.id", ondelete="CASCADE"), nullable=False)
 
     propietario = relationship("Usuario", back_populates="habitaciones")
     preferencias = relationship(

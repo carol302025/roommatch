@@ -18,6 +18,12 @@ app = FastAPI(
 
 try:
     Base.metadata.create_all(bind=engine)
+    # Migración: añadir columna fecha_disponible si no existe
+    with engine.connect() as conn:
+        conn.execute(__import__('sqlalchemy').text(
+            "ALTER TABLE habitacion ADD COLUMN IF NOT EXISTS fecha_disponible DATE;"
+        ))
+        conn.commit()
     print("✅ Base de datos conectada correctamente")
 except Exception as e:
     print(f" No se pudo conectar a la BD al arrancar: {e}")
