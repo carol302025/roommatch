@@ -55,10 +55,10 @@
 }
 
 .home-header-logo img {
-    width: 36px;
-    height: 36px;
+    height: 40px;
+    width: auto;
     object-fit: contain;
-    filter: brightness(0) invert(1);
+    border-radius: 8px;
 }
 
 .home-header-nav {
