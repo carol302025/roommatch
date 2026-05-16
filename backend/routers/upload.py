@@ -1,15 +1,17 @@
 import os
 import uuid
+import requests
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from fastapi.responses import JSONResponse
 
 router = APIRouter(prefix="/upload", tags=["Upload"])
 
-UPLOAD_DIR = "uploads"
-os.makedirs(UPLOAD_DIR, exist_ok=True)
-
 EXTENSIONES_PERMITIDAS = {".jpg", ".jpeg", ".png", ".webp"}
 TAMANO_MAXIMO = 5 * 1024 * 1024  # 5 MB
+
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_KEY")
+BUCKET = "fotos"
 
 
 @router.post("/foto")
@@ -23,11 +25,19 @@ async def subir_foto(file: UploadFile = File(...)):
         raise HTTPException(status_code=400, detail="La imagen no puede superar 5 MB.")
 
     nombre = f"{uuid.uuid4()}{extension}"
-    ruta = os.path.join(UPLOAD_DIR, nombre)
 
-    with open(ruta, "wb") as f:
-        f.write(contenido)
+    content_type = file.content_type or "image/jpeg"
+    resp = requests.post(
+        f"{SUPABASE_URL}/storage/v1/object/{BUCKET}/{nombre}",
+        headers={
+            "Authorization": f"Bearer {SUPABASE_KEY}",
+            "Content-Type": content_type,
+        },
+        data=contenido,
+    )
 
-    domain = os.getenv("RAILWAY_PUBLIC_DOMAIN")
-    base_url = f"https://{domain}" if domain else "http://127.0.0.1:8000"
-    return JSONResponse({"url": f"{base_url}/uploads/{nombre}"})
+    if resp.status_code not in (200, 201):
+        raise HTTPException(status_code=500, detail="Error al subir la imagen a Supabase Storage.")
+
+    url_publica = f"{SUPABASE_URL}/storage/v1/object/public/{BUCKET}/{nombre}"
+    return JSONResponse({"url": url_publica})
