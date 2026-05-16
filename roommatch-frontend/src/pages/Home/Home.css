@@ -10,7 +10,7 @@
 .hero-wrapper {
     position: relative;
     background-size: cover;
-    background-position: center center;
+    background-position: center 35%;
     background-repeat: no-repeat;
 }
 
@@ -37,10 +37,8 @@
     justify-content: space-between;
     padding: 0 4rem;
     height: 72px;
-    background: rgba(10, 25, 18, 0.25);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    background: transparent;
+    border-bottom: none;
 }
 
 .home-header-logo {
@@ -58,25 +56,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    border-radius: 16px;
-    padding: 4px 6px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
-    transition: background 0.2s;
-}
-
-.home-logo-pill:hover {
-    background: rgba(255, 255, 255, 0.18);
 }
 
 .home-header-logo img {
-    height: 50px;
+    height: 68px;
     width: auto;
     object-fit: contain;
-    mix-blend-mode: multiply;
+    border-radius: 18px;
 }
 
 .home-header-nav {

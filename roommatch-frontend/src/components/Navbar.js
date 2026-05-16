@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import './Navbar.css';
-import logo from '../assets/logoP.png';
 import { useAuth } from '../context/AuthContext';
 import { useEffect, useState } from 'react';
 import { getMensajesNoLeidos } from '../services/api';
@@ -40,7 +39,7 @@ function Navbar() {
         <nav className="navbar">
             <div className='navbar-logo'>
                 <Link to='/'>
-                    <img src={logo} alt='RoomMatch logo' className='navbar-logo-img' />
+                    RoomMatch
                 </Link>
             </div>
 
