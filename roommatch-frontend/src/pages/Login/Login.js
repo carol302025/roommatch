@@ -24,7 +24,8 @@ function Login() {
             const respuesta = await loginUsuario({ email, password });
             if (respuesta.access_token) {
                 login(respuesta);
-                navigate(respuesta.rol === 'propietario' ? '/mis-pisos' : '/habitaciones');
+                navigate('/');
+               // navigate(respuesta.rol === 'propietario' ? '/mis-pisos' : '/');
             } else {
                 setError(respuesta.detail || 'Email o contraseña incorrectos');
             }
