@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { getPerfilInquilino, actualizarPerfilInquilino, getPreferenciasInquilino, actualizarPreferenciasInquilino } from '../../services/api';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logoP.png';
 
 function ChipGroup({ opciones, valor, onChange }) {
     return (

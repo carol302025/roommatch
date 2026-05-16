@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { getHabitaciones, toggleFavorito, getFavoritosIds, getMatches } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
 import heroBg from '../../assets/imagen2.png';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logoP.png';
 
 const CIUDADES = [
     { id: 'todas',     label: 'Todas',     emoji: '🌍' },
