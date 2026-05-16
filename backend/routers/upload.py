@@ -37,7 +37,7 @@ async def subir_foto(file: UploadFile = File(...)):
     )
 
     if resp.status_code not in (200, 201):
-        raise HTTPException(status_code=500, detail="Error al subir la imagen a Supabase Storage.")
+        raise HTTPException(status_code=500, detail=f"Supabase error {resp.status_code}: {resp.text}")
 
     url_publica = f"{SUPABASE_URL}/storage/v1/object/public/{BUCKET}/{nombre}"
     return JSONResponse({"url": url_publica})
