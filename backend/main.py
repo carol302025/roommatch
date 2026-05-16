@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from database import engine, Base
 import models  # Importa los modelos para que SQLAlchemy los registre en Base
-from routers import usuarios, habitaciones, mensaje, upload, favoritos
+from routers import usuarios, habitaciones, mensaje, upload, favoritos, resenas
 import os
 
 
@@ -72,5 +72,6 @@ app.include_router(habitaciones.router) # Router para CRUD de habitaciones
 app.include_router(mensaje.router) # Router para mensajes entre usuarios
 app.include_router(upload.router)
 app.include_router(favoritos.router)
+app.include_router(resenas.router)
 os.makedirs("uploads", exist_ok=True)
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")

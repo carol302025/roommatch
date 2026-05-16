@@ -1,18 +1,23 @@
 import './DetallePiso.css';
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { getHabitacion } from '../../services/api';
+import { getHabitacion, getResenas, crearResena } from '../../services/api';
 import FormMensaje from '../../components/FormMensaje';
 import { useAuth } from '../../context/AuthContext';
 
 function DetallePiso() {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { usuario } = useAuth();
+    const { usuario, token } = useAuth();
     const [habitacion, setHabitacion] = useState(null);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
     const [mostrarFormulario, setMostrarFormulario] = useState(false);
+    const [resenas, setResenas] = useState([]);
+    const [puntuacion, setPuntuacion] = useState(5);
+    const [comentario, setComentario] = useState('');
+    const [enviandoResena, setEnviandoResena] = useState(false);
+    const [errorResena, setErrorResena] = useState(null);
 
     function handleContactar() {
         if (!usuario) {
@@ -21,7 +26,7 @@ function DetallePiso() {
         }
         setMostrarFormulario(v => !v);
     }
-    
+
     useEffect(() => {
         async function cargar() {
             try {
@@ -39,6 +44,26 @@ function DetallePiso() {
         }
         cargar();
     }, [id]);
+
+    useEffect(() => {
+        getResenas(id).then(setResenas).catch(() => {});
+    }, [id]);
+
+    async function handleEnviarResena(e) {
+        e.preventDefault();
+        setEnviandoResena(true);
+        setErrorResena(null);
+        try {
+            const nueva = await crearResena(id, { puntuacion, comentario }, token);
+            setResenas(prev => [nueva, ...prev]);
+            setComentario('');
+            setPuntuacion(5);
+        } catch (err) {
+            setErrorResena(err.message || 'No se pudo enviar la reseña');
+        } finally {
+            setEnviandoResena(false);
+        }
+    }
 
     if (cargando) return <div className="detalle-page"><div className="detalle-inner"><p>Cargando...</p></div></div>;
     if (error) return <div className="detalle-page"><div className="detalle-inner"><p className="detalle-error">{error}</p></div></div>;
@@ -134,6 +159,57 @@ function DetallePiso() {
                             </div>
                         </div>
                     )}
+
+                    {/* ── Reseñas ── */}
+                    <div className="detalle-seccion">
+                        <h2>Reseñas ({resenas.length})</h2>
+
+                        {resenas.length === 0 && (
+                            <p className="resenas-vacio">Aún no hay reseñas para esta habitación.</p>
+                        )}
+
+                        {resenas.map(r => (
+                            <div key={r.id} className="resena-item">
+                                <div className="resena-header">
+                                    <span className="resena-autor">{r.autor_nombre || 'Usuario'}</span>
+                                    <span className="resena-estrellas">
+                                        {'★'.repeat(r.puntuacion)}{'☆'.repeat(5 - r.puntuacion)}
+                                    </span>
+                                    <span className="resena-fecha">
+                                        {new Date(r.created_at).toLocaleDateString('es-ES')}
+                                    </span>
+                                </div>
+                                {r.comentario && <p className="resena-comentario">{r.comentario}</p>}
+                            </div>
+                        ))}
+
+                        {usuario?.rol === 'inquilino' && (
+                            <form className="resena-form" onSubmit={handleEnviarResena}>
+                                <h3>Deja tu valoración</h3>
+                                <div className="resena-estrellas-select">
+                                    {[1,2,3,4,5].map(n => (
+                                        <button
+                                            key={n}
+                                            type="button"
+                                            className={`estrella-btn ${puntuacion >= n ? 'activa' : ''}`}
+                                            onClick={() => setPuntuacion(n)}
+                                        >★</button>
+                                    ))}
+                                </div>
+                                <textarea
+                                    placeholder="Cuéntanos tu experiencia (opcional)"
+                                    value={comentario}
+                                    onChange={e => setComentario(e.target.value)}
+                                    rows={3}
+                                    className="resena-textarea"
+                                />
+                                {errorResena && <p className="error-mensaje">{errorResena}</p>}
+                                <button type="submit" className="btn-contactar" disabled={enviandoResena}>
+                                    {enviandoResena ? 'Enviando...' : 'Publicar reseña'}
+                                </button>
+                            </form>
+                        )}
+                    </div>
 
                 </div>
 

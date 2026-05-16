@@ -177,3 +177,23 @@ class Favorito(Base):
     __table_args__ = (
         UniqueConstraint('usuario_id', 'habitacion_id', name='uq_favorito_usuario_habitacion'),
     )
+
+
+class Resena(Base):
+    __tablename__ = "resena"
+
+    id            = Column(Integer, primary_key=True, index=True)
+    autor_id      = Column(Integer, ForeignKey("usuario.id", ondelete="CASCADE"), nullable=False)
+    habitacion_id = Column(Integer, ForeignKey("habitacion.id", ondelete="CASCADE"), nullable=False)
+    puntuacion    = Column(Integer, nullable=False)  # 1 a 5 estrellas
+    comentario    = Column(Text, nullable=True)
+    created_at    = Column(TIMESTAMP, server_default=func.now())
+
+    autor      = relationship("Usuario", foreign_keys=[autor_id])
+    habitacion = relationship("Habitacion", foreign_keys=[habitacion_id])
+
+    __table_args__ = (
+        UniqueConstraint('autor_id', 'habitacion_id', name='uq_resena_autor_habitacion'),
+    )
+
+    

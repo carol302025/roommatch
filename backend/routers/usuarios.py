@@ -370,3 +370,40 @@ def resetear_password(datos: ResetPasswordRequest, db: Session = Depends(get_db)
     db.commit()
 
     return {"msg": "Contrasena actualizada correctamente"}
+
+
+# ==========================================================
+# VERIFICACION DE USUARIOS (solo admin)
+# ==========================================================
+@router.put("/{usuario_id}/verificar")
+def verificar_usuario(
+    usuario_id: int,
+    current_user: Usuario = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """
+    Marca el email de un usuario como verificado.
+    Solo puede ejecutarlo un usuario con rol 'admin'.
+    El badge 'Verificado' aparece en su perfil público y en el chat.
+    """
+    if current_user.rol != RolUsuario.admin:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Solo un administrador puede verificar usuarios"
+        )
+
+    usuario = db.query(Usuario).filter(
+        Usuario.id == usuario_id,
+        Usuario.activo == True
+    ).first()
+
+    if not usuario:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Usuario no encontrado"
+        )
+
+    usuario.email_verificado = True
+    db.commit()
+
+    return {"msg": f"Usuario {usuario.nombre} verificado correctamente", "email_verificado": True}

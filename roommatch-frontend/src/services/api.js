@@ -274,6 +274,27 @@ export async function calcularCompatibilidad(inquilinoId, token) {
 
 // ── UPLOAD ──────────────────────────────────────────────────
 
+// ── RESEÑAS ──────────────────────────────────────────────────
+
+export async function getResenas(habitacionId) {
+    return apiFetch(`resenas/${habitacionId}`);
+}
+
+export async function crearResena(habitacionId, datos, token) {
+    return apiFetch(`resenas/${habitacionId}`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}` },
+        body: JSON.stringify(datos),
+    });
+}
+
+export async function eliminarResena(resenaId, token) {
+    return apiFetch(`resenas/${resenaId}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${token}` },
+    });
+}
+
 // Subir foto — devuelve { url: "http://..." }
 // Usa FormData porque es un archivo, no JSON
 export async function subirFoto(archivo) {

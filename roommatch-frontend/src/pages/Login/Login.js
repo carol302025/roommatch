@@ -89,7 +89,7 @@ function Login() {
                         </div>
                     </div>
 
-                    <p className="olvidaste">¿Olvidaste tu contraseña?</p>
+                    <Link to="/recuperar-password" className="olvidaste">¿Olvidaste tu contraseña?</Link>
 
                     {error && <p className="error-mensaje">{error}</p>}
 

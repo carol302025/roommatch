@@ -19,9 +19,11 @@ import PerfilPublico from './pages/PerfilPublico/PerfilPublico';
 import MisFavoritos from './pages/MisFavoritos/MisFavoritos';
 import TodasHabitaciones from './pages/TodasHabitaciones/TodasHabitaciones';
 import MisPreferencias from './pages/MisPreferencias/MisPreferencias';
+import RecuperarPassword from './pages/RecuperarPassword/RecuperarPassword';
+import ResetPassword from './pages/ResetPassword/ResetPassword';
 
 // Rutas donde se oculta navbar y footer
-const RUTAS_SIN_NAV_EXACT = ['/', '/login', '/registro', '/mensajes', '/perfil', '/habitaciones', '/mis-preferencias'];
+const RUTAS_SIN_NAV_EXACT = ['/', '/login', '/registro', '/mensajes', '/perfil', '/habitaciones', '/mis-preferencias', '/recuperar-password', '/reset-password'];
 const RUTAS_SIN_NAV_PREFIX = ['/editar-piso', '/publicar-piso', '/usuario', '/pisos'];
 
 function Layout() {
@@ -42,6 +44,8 @@ function Layout() {
         <Route path="/buscar-pisos" element={<BuscarPisos />} />
         <Route path="/habitaciones" element={<TodasHabitaciones />} />
         <Route path="/pisos/:id"   element={<DetallePiso />} />
+        <Route path="/recuperar-password" element={<RecuperarPassword />} />
+        <Route path="/reset-password"     element={<ResetPassword />} />
 
         {/* Privadas — cualquier usuario logueado */}
         <Route path="/mis-favoritos" element={

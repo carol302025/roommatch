@@ -265,3 +265,23 @@ class MarcarLeidoRequest(BaseModel):
 class EliminarMensajeRequest(BaseModel):
     """Para eliminar lógicamente la conversación con otro usuario."""
     otro_usuario_id: int
+
+
+# ==========================================================
+# RESEÑAS
+# ==========================================================
+class ResenaCrear(BaseModel):
+    puntuacion: Annotated[int, Field(ge=1, le=5)]
+    comentario: Optional[str] = None
+
+
+class ResenaResponse(BaseModel):
+    id: int
+    autor_id: int
+    habitacion_id: int
+    puntuacion: int
+    comentario: Optional[str] = None
+    created_at: datetime
+    autor_nombre: Optional[str] = None
+
+    model_config = ConfigDict(from_attributes=True)
