@@ -23,10 +23,11 @@
 }
 
 .navbar-logo-img {
-    height: 44px;
+    height: 42px;
     width: auto;
     object-fit: contain;
     display: block;
+    mix-blend-mode: multiply;
 }
 
 /* Centro */
