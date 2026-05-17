@@ -152,7 +152,7 @@
    ------------------------------------------------------------------- */
 
 @media (max-width: 820px) {
-  .detalle-page { padding-bottom: 80px; }
+  .detalle-page { padding-bottom: 120px; }
   .detalle-inner { padding: 1.25rem 1rem 2rem; }
   .detalle-foto { height: 240px; border-radius: 14px; }
   .detalle-body {
