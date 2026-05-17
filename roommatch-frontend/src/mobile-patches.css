@@ -152,7 +152,7 @@
    ------------------------------------------------------------------- */
 
 @media (max-width: 820px) {
-  .detalle-page { padding-bottom: 120px; }
+  .detalle-page { padding-bottom: 2rem; }
   .detalle-inner { padding: 1.25rem 1rem 2rem; }
   .detalle-foto { height: 240px; border-radius: 14px; }
   .detalle-body {
@@ -163,35 +163,28 @@
   .detalle-izq h1 { font-size: 1.3rem; }
   .detalle-meta { font-size: 0.85rem; margin-bottom: 1rem; }
   .detalle-der {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    z-index: 50;
-    background: #fff;
-    padding: 0.75rem 1rem;
-    border-top: 1px solid #e2e8f0;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    position: static;
+    background: #f8fafc;
+    padding: 1.25rem;
+    border-radius: 16px;
+    border: 1.5px solid #e2e8f0;
   }
   .detalle-card-precio {
     position: static !important;
     padding: 0 !important;
     border: none !important;
     box-shadow: none !important;
-    flex-direction: row !important;
-    align-items: center;
-    gap: 1rem !important;
   }
   .detalle-precio {
-    font-size: 1.3rem !important;
-    flex: 1;
+    font-size: 1.5rem !important;
+    margin-bottom: 0.75rem;
   }
   .detalle-precio span { font-size: 0.85rem !important; }
-  .detalle-card-precio .gastos-tag,
-  .detalle-card-precio .detalle-aviso { display: none; }
   .btn-contactar {
-    margin: 0;
-    padding: 0.7rem 1.2rem !important;
-    font-size: 0.88rem !important;
-    flex-shrink: 0;
+    width: 100%;
+    padding: 0.85rem !important;
+    font-size: 0.95rem !important;
+    margin-top: 0.5rem;
   }
   .detalle-topbar { padding: 0.6rem 1rem; }
   .detalle-topbar-links { gap: 0.75rem; }
