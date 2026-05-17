@@ -186,8 +186,7 @@
   }
   .detalle-precio span { font-size: 0.85rem !important; }
   .detalle-card-precio .gastos-tag,
-  .detalle-card-precio .detalle-aviso,
-  .detalle-card-precio .detalle-ver-propietario { display: none; }
+  .detalle-card-precio .detalle-aviso { display: none; }
   .btn-contactar {
     margin: 0;
     padding: 0.7rem 1.2rem !important;

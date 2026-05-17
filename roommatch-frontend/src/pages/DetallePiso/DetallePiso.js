@@ -2,7 +2,6 @@ import './DetallePiso.css';
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getHabitacion, getResenas, crearResena } from '../../services/api';
-import FormMensaje from '../../components/FormMensaje';
 import { useAuth } from '../../context/AuthContext';
 
 function DetallePiso() {
@@ -12,7 +11,6 @@ function DetallePiso() {
     const [habitacion, setHabitacion] = useState(null);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
-    const [mostrarFormulario, setMostrarFormulario] = useState(false);
     const [resenas, setResenas] = useState([]);
     const [puntuacion, setPuntuacion] = useState(5);
     const [comentario, setComentario] = useState('');
@@ -24,7 +22,7 @@ function DetallePiso() {
             navigate('/login');
             return;
         }
-        setMostrarFormulario(v => !v);
+        navigate(`/mensajes?con=${habitacion.propietario_id}`);
     }
 
     useEffect(() => {
@@ -226,13 +224,8 @@ function DetallePiso() {
                         {usuario?.rol === 'inquilino' && (
                             <>
                                 <button className="btn-contactar" onClick={handleContactar}>
-                                    {mostrarFormulario ? 'Ocultar formulario' : 'Contactar al anunciante'}
+                                    Contactar al anunciante
                                 </button>
-                                {mostrarFormulario && (
-                                    <div style={{ marginTop: '12px' }}>
-                                        <FormMensaje receptorId={habitacion.propietario_id} />
-                                    </div>
-                                )}
                                 <Link className="detalle-ver-propietario" to={`/usuario/${habitacion.propietario_id}`}>
                                     Ver perfil del propietario →
                                 </Link>
