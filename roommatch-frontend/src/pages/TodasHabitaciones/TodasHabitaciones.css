@@ -221,6 +221,8 @@
 
 /* Responsive */
 @media (max-width: 600px) {
+    .todas-topbar { padding: 0 1rem; }
+    .todas-topbar-links { display: none; }
     .todas-page { padding: 1.5rem 1rem 3rem; }
     .todas-grid { grid-template-columns: 1fr 1fr; }
 }

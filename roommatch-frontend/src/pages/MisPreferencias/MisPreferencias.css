@@ -393,11 +393,14 @@
 
 /* ── Responsive ── */
 @media (max-width: 640px) {
+    .prefs-topbar { padding: 0 1rem; }
+    .prefs-topbar-links { display: none; }
     .prefs-page { padding: 1.5rem 1rem 4rem; }
     .prefs-campos { grid-template-columns: 1fr; }
     .prefs-footer { flex-direction: column; }
     .prefs-btn-guardar, .prefs-btn-match { width: 100%; text-align: center; }
-    .prefs-topbar-links { gap: 1rem; }
     .prefs-heading { flex-direction: column; }
     .prefs-campos-chips { padding: 1.25rem 1rem; }
+    .prefs-card-header { padding: 1.25rem 1rem 1rem; }
+    .prefs-toggles { padding: 0.5rem 1rem 1.25rem; }
 }

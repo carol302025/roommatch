@@ -1,14 +1,53 @@
+/* ===================================================================
+   RoomMatch v2 — Estilos globales
+   Paleta unificada · Plus Jakarta Sans · Tokens semanticos
+   =================================================================== */
 
-/* ── Variables globales de color y tipografía ── */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+
 :root {
-  --color-primario:   #065d2a;   /* esmeralda principal */
-  --color-primario-hover: #2e8a50; /* esmeralda oscuro, para cuando pasas el ratón */
-  --color-fondo:       white;   /* verde menta suave, fondo de la página */
-  --color-blanco:      #FFFFFF;   /* blanco puro, fondo de tarjetas */
-  --color-texto:       #2f3236;   /* gris muy oscuro, texto principal */
-  --color-texto-suave: #262627;   /* gris medio, subtítulos y labels */
-  --color-borde:       #5c5e5c;   /* gris suave, bordes de inputs */
-  --color-error:       #EF4444;   /* rojo suave, mensajes de error */
+  /* --- Paleta emerald (sustituye al sage anterior) --- */
+  --em-950: #022c22;
+  --em-900: #064e3b;
+  --em-800: #065f46;
+  --em-700: #047857;
+  --em-600: #059669;   /* PRIMARIO */
+  --em-500: #10b981;
+  --em-400: #34d399;
+  --em-300: #6ee7b7;
+  --em-100: #d1fae5;
+  --em-50:  #ecfdf5;
+
+  /* --- Aliases de compatibilidad --- */
+  --color-primario:        var(--em-600);
+  --color-primario-hover:  var(--em-700);
+  --color-primario-dark:   var(--em-800);
+  --color-fondo:           #ffffff;
+  --color-blanco:          #ffffff;
+  --color-texto:           #1e293b;
+  --color-texto-suave:     #475569;
+  --color-texto-tenue:     #64748b;
+  --color-borde:           #e5e7eb;
+  --color-borde-suave:     #f1f5f9;
+  --color-fondo-suave:     #f8fafc;
+  --color-error:           #EF4444;
+  --color-error-bg:        #FEF2F2;
+
+  /* --- Gradientes reutilizables --- */
+  --grad-primario:   linear-gradient(135deg, var(--em-600), var(--em-700));
+  --grad-emerald:    linear-gradient(135deg, var(--em-600), var(--em-500));
+  --grad-cta-dark:   linear-gradient(135deg, var(--em-950), var(--em-900));
+
+  /* --- Sombras --- */
+  --shadow-sm:    0 1px 2px rgba(15,40,30,0.04);
+  --shadow-card:  0 4px 18px rgba(15,40,30,0.06), 0 1px 2px rgba(15,40,30,0.04);
+  --shadow-hover: 0 16px 40px rgba(15,40,30,0.12), 0 2px 6px rgba(15,40,30,0.05);
+  --shadow-cta:   0 4px 20px rgba(5,150,105,0.30);
+  --shadow-pill:  0 2px 12px rgba(5,150,105,0.40);
+  --shadow-modal: 0 8px 48px rgba(15,40,30,0.13);
+
+  /* --- Focus ring --- */
+  --focus-ring: 0 0 0 3px rgba(5,150,105,0.15);
 }
 
 * {
@@ -18,25 +57,27 @@
 }
 
 body {
-  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
   background-color: var(--color-fondo);
   color: var(--color-texto);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-/* ── Botón Volver global ── */
+/* --- Boton Volver global --- */
 .btn-volver {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #f0fdf4;
-  border: 1.5px solid #4A7A4D;
-  color: #4A7A4D;
+  background: var(--em-50);
+  border: 1.5px solid var(--em-600);
+  color: var(--em-700);
   font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
   padding: 6px 14px;
-  border-radius: 20px;
+  border-radius: 50px;
   font-family: inherit;
   transition: all 0.2s;
   text-decoration: none;
@@ -44,12 +85,12 @@ body {
 }
 
 .btn-volver:hover {
-  background: #4A7A4D;
+  background: var(--em-600);
   color: white;
   transform: translateX(-2px);
 }
 
-/* ── Chips — usados en MisPreferencias, PublicarPiso, EditarPiso ── */
+/* --- Chips --- */
 .chip-group {
   display: flex;
   flex-wrap: wrap;
@@ -58,7 +99,7 @@ body {
 
 .chip {
   padding: 0.45rem 1rem;
-  border-radius: 20px;
+  border-radius: 50px;
   border: 1.5px solid #e2e8f0;
   background: white;
   font-size: 0.83rem;
@@ -66,24 +107,25 @@ body {
   color: #64748b;
   cursor: pointer;
   font-family: inherit;
-  transition: all 0.2s;
+  transition: all 0.18s;
   display: flex;
   align-items: center;
   gap: 0.3rem;
 }
 
 .chip:hover {
-  border-color: #4A7A4D;
-  color: #4A7A4D;
+  border-color: var(--em-600);
+  color: var(--em-600);
 }
 
 .chip.activo {
-  background: #4A7A4D;
-  border-color: #4A7A4D;
+  background: var(--em-600);
+  border-color: var(--em-600);
   color: white;
+  box-shadow: var(--shadow-pill);
 }
 
-/* ── Campo-grupo de chips — label + chip-group ── */
+/* --- Campo de chips --- */
 .prefs-campo-grupo {
   display: flex;
   flex-direction: column;

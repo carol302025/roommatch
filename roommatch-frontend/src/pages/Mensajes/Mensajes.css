@@ -303,6 +303,9 @@
 
 /* ── Responsive ── */
 @media (max-width: 640px) {
+    .mensajes-topbar { padding: 0 1rem; }
+    .mensajes-topbar-links { display: none; }
+
     .mensajes-page {
         grid-template-columns: 1fr;
         height: auto;

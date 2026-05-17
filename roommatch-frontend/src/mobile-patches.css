@@ -1,0 +1,348 @@
+/* ===================================================================
+   RoomMatch — Mobile patches
+   ===================================================================
+   Drop-in CSS para arreglar lo que se rompe en movil sin tocar nada
+   mas. Ningun cambio aqui afecta a desktop (todo va dentro de @media).
+   =================================================================== */
+
+
+/* -------------------------------------------------------------------
+   1.  NAVBAR (componente Navbar)
+   ------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+  }
+  .navbar-logo { flex: 0 0 auto; }
+  .navbar-logo a { font-size: 1rem; }
+  .navbar-actions {
+    flex: 0 0 auto;
+    gap: 0.6rem;
+  }
+  .navbar-actions .nav-link { font-size: 0.8rem; }
+  .navbar .btn-logout,
+  .btn-registro {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.78rem;
+  }
+  .btn-login { font-size: 0.8rem; }
+  .navbar-center {
+    order: 99;
+    flex: 1 0 100%;
+    padding-left: 0;
+    gap: 1.25rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 0.5rem;
+    margin-top: 0.25rem;
+  }
+  .navbar-center::-webkit-scrollbar { display: none; }
+  .navbar-center .nav-link,
+  .navbar-center .navbar-pill {
+    font-size: 0.83rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .navbar-pill { padding: 0.4rem 0.95rem; }
+}
+
+
+/* -------------------------------------------------------------------
+   2.  HOME HEADER (header transparente sobre el hero)
+   ------------------------------------------------------------------- */
+
+@media (max-width: 820px) {
+  .home-header {
+    padding: 0 1.25rem;
+    height: 60px;
+  }
+  .home-header-logo img { height: 32px; }
+  .home-header-nav { gap: 0.2rem; }
+  .home-nav-link {
+    font-size: 0.76rem;
+    padding: 0.3rem 0.5rem;
+  }
+  .home-nav-pill {
+    font-size: 0.72rem;
+    padding: 0.32rem 0.7rem;
+    margin-left: 0.15rem;
+  }
+}
+
+/* En pantallas muy pequenas: header en 2 filas, todo visible */
+@media (max-width: 540px) {
+  .home-header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0.6rem 1rem;
+    gap: 0.4rem;
+  }
+  .home-header-logo img { height: 34px; }
+  .home-header-nav {
+    width: 100%;
+    justify-content: center;
+    gap: 0.15rem;
+    flex-wrap: wrap;
+  }
+  .home-nav-link {
+    font-size: 0.73rem;
+    padding: 0.28rem 0.5rem;
+  }
+  .home-nav-pill {
+    font-size: 0.73rem;
+    padding: 0.35rem 0.75rem;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 2rem 1rem 3rem;
+    min-height: 280px;
+    gap: 1.25rem;
+  }
+  .hero h1 {
+    font-size: 1.8rem;
+    letter-spacing: -0.8px;
+  }
+}
+
+
+/* -------------------------------------------------------------------
+   3.  HERO SEARCHBAR
+   ------------------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .hero-searchbar {
+    flex-direction: column;
+    border-radius: 16px;
+    padding: 0.6rem;
+    gap: 0.4rem;
+    align-items: stretch;
+    max-width: 100%;
+  }
+  .searchbar-divider { display: none; }
+  .searchbar-campo {
+    padding: 0.55rem 0.7rem;
+    font-size: 0.95rem;
+  }
+  .searchbar-campo input,
+  .searchbar-campo select {
+    font-size: 16px;
+  }
+  .searchbar-btn {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 0.95rem;
+    border-radius: 12px;
+    margin-top: 0.25rem;
+  }
+}
+
+
+/* -------------------------------------------------------------------
+   4.  DETALLE PISO — precio fijo abajo como Airbnb/Idealista
+   ------------------------------------------------------------------- */
+
+@media (max-width: 820px) {
+  .detalle-page { padding-bottom: 80px; }
+  .detalle-inner { padding: 1.25rem 1rem 2rem; }
+  .detalle-foto { height: 240px; border-radius: 14px; }
+  .detalle-body {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+  .detalle-izq h1 { font-size: 1.3rem; }
+  .detalle-meta { font-size: 0.85rem; margin-bottom: 1rem; }
+  .detalle-der {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 50;
+    background: #fff;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid #e2e8f0;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+  }
+  .detalle-card-precio {
+    position: static !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 1rem !important;
+  }
+  .detalle-precio {
+    font-size: 1.3rem !important;
+    flex: 1;
+  }
+  .detalle-precio span { font-size: 0.85rem !important; }
+  .detalle-card-precio .gastos-tag,
+  .detalle-card-precio .detalle-aviso,
+  .detalle-card-precio .detalle-ver-propietario { display: none; }
+  .btn-contactar {
+    margin: 0;
+    padding: 0.7rem 1.2rem !important;
+    font-size: 0.88rem !important;
+    flex-shrink: 0;
+  }
+  .detalle-topbar { padding: 0.6rem 1rem; }
+  .detalle-topbar-links { gap: 0.75rem; }
+  .detalle-topbar-link { font-size: 0.78rem; }
+}
+
+@media (max-width: 480px) {
+  .detalle-topbar-links .detalle-topbar-link:not(:last-child) { display: none; }
+  .detalle-foto { height: 200px; }
+}
+
+
+/* -------------------------------------------------------------------
+   5.  TOUCH TARGETS — botones mas grandes para dedos
+   ------------------------------------------------------------------- */
+
+@media (max-width: 820px) {
+  .btn-heart {
+    width: 36px;
+    height: 36px;
+    font-size: 1.05rem;
+  }
+  .input-password span {
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+  }
+  .ciudad-chip {
+    padding: 0.55rem 1.15rem;
+    font-size: 0.9rem;
+  }
+  .filtros-toggles {
+    flex-direction: column;
+    gap: 0.25rem !important;
+  }
+  .toggle-item {
+    width: 100%;
+    padding: 0.65rem 0.25rem;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .toggle-item:last-child { border-bottom: none; }
+}
+
+
+/* -------------------------------------------------------------------
+   6.  iOS ZOOM ON FOCUS — evitar zoom al tocar inputs
+   ------------------------------------------------------------------- */
+
+@media (max-width: 820px) {
+  input, select, textarea { font-size: 16px !important; }
+  label { font-size: 0.85rem !important; }
+}
+
+
+/* -------------------------------------------------------------------
+   7.  GRID DE CARDS — 2 columnas en movil pequeno
+   ------------------------------------------------------------------- */
+
+@media (max-width: 480px) {
+  .habitaciones-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.85rem;
+  }
+  .habitacion-card { border-radius: 14px; }
+  .card-foto { height: 120px; }
+  .card-info { padding: 0.7rem 0.8rem 0.85rem; }
+  .card-info h3 { font-size: 0.83rem; }
+  .card-ciudad { font-size: 0.72rem; margin-bottom: 0.35rem; }
+  .card-precio { font-size: 0.92rem; }
+  .precio-mes { font-size: 0.7rem; }
+}
+
+
+/* -------------------------------------------------------------------
+   8.  FOOTER
+   ------------------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .footer-inner {
+    padding: 2rem 1rem 1.5rem;
+    gap: 1.5rem;
+  }
+}
+
+
+/* -------------------------------------------------------------------
+   9.  CTA BANNER
+   ------------------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .cta-banner {
+    padding: 1.25rem;
+    border-radius: 18px;
+    gap: 1rem;
+  }
+  .cta-banner-acciones { width: 100%; }
+  .cta-banner-acciones .btn-outline,
+  .cta-banner-acciones .btn-solid {
+    flex: 1;
+    text-align: center;
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+
+/* -------------------------------------------------------------------
+   10.  COMO FUNCIONA — pasos en 1 columna en movil
+   ------------------------------------------------------------------- */
+
+@media (max-width: 480px) {
+  .como-pasos {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem;
+  }
+  .como-paso {
+    padding: 1.15rem 1.25rem;
+    border-radius: 16px;
+  }
+  .como-paso h3 { font-size: 0.95rem; }
+  .como-paso p { font-size: 0.85rem; }
+}
+
+
+/* -------------------------------------------------------------------
+   11.  HEADINGS en movil
+   ------------------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .seccion-titulo h2,
+  .seccion-titulo-verde { font-size: 1.15rem; }
+  .como-header h2 { font-size: 1.3rem; }
+  .home-tagline { font-size: 0.95rem; padding: 0; }
+}
+
+
+/* -------------------------------------------------------------------
+   12.  SCROLL SUAVE + SAFE AREA (notch iPhone)
+   ------------------------------------------------------------------- */
+
+html { scroll-behavior: smooth; }
+
+@supports (padding: max(0px)) {
+  .navbar,
+  .home-header,
+  .detalle-topbar {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+  .detalle-der {
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+}

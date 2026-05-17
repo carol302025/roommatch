@@ -124,3 +124,9 @@
     font-weight: 500;
     color: #1e293b;
 }
+
+@media (max-width: 520px) {
+    .perfil-pub-page { padding: 1.5rem 1rem 3rem; }
+    .perfil-pub-card { padding: 2rem 1.25rem; }
+    .perfil-pub-nombre { font-size: 1.3rem; }
+}

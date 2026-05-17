@@ -279,12 +279,22 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .detalle-topbar { padding: 0 1rem; }
+    .detalle-topbar-links { display: none; }
     .detalle-body {
         grid-template-columns: 1fr;
     }
     .detalle-card-precio {
         position: static;
     }
+}
+
+@media (max-width: 480px) {
+    .detalle-foto { height: 220px; }
+    .detalle-titulo { font-size: 1.4rem; }
+    .detalle-wrapper { padding: 1rem; }
+    .badges-grid { grid-template-columns: 1fr 1fr; }
+    .detalle-card-precio { padding: 1rem; }
 }
 .form-mensaje {
     margin-top: 4px;

@@ -361,6 +361,9 @@
 
 @media (max-width: 480px) {
     .habitaciones-grid { grid-template-columns: 1fr; }
+    .buscar-page { padding: 1rem 0.75rem 3rem; }
+    .filtros-wrapper { padding: 1.25rem 1rem; border-radius: 16px; }
+    .filtros-titulo { font-size: 1rem; }
 }
 
 .btn-heart {

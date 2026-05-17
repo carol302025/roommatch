@@ -396,6 +396,8 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
+    .perfil-topbar { padding: 0 1rem; }
+    .perfil-topbar-links { display: none; }
     .perfil-page { padding: 1.5rem 1rem 3rem; }
     .perfil-inner { grid-template-columns: 1fr; }
     .perfil-sidebar { position: static; }

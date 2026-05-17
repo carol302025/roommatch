@@ -22,15 +22,23 @@ import MisPreferencias from './pages/MisPreferencias/MisPreferencias';
 import RecuperarPassword from './pages/RecuperarPassword/RecuperarPassword';
 import ResetPassword from './pages/ResetPassword/ResetPassword';
 
-// Rutas donde se oculta navbar y footer
+// Rutas donde se oculta la navbar (tienen cabecera propia)
 const RUTAS_SIN_NAV_EXACT = ['/', '/login', '/registro', '/mensajes', '/perfil', '/habitaciones', '/mis-preferencias', '/recuperar-password', '/reset-password'];
 const RUTAS_SIN_NAV_PREFIX = ['/editar-piso', '/publicar-piso', '/usuario', '/pisos'];
+
+// Rutas donde se oculta también el footer
+const RUTAS_SIN_FOOTER_EXACT = ['/login', '/registro', '/mensajes', '/recuperar-password', '/reset-password'];
+const RUTAS_SIN_FOOTER_PREFIX = ['/editar-piso', '/publicar-piso', '/usuario', '/pisos'];
 
 function Layout() {
   const { pathname } = useLocation();
   const sinNav =
     RUTAS_SIN_NAV_EXACT.includes(pathname) ||
     RUTAS_SIN_NAV_PREFIX.some(prefix => pathname.startsWith(prefix));
+
+  const sinFooter =
+    RUTAS_SIN_FOOTER_EXACT.includes(pathname) ||
+    RUTAS_SIN_FOOTER_PREFIX.some(prefix => pathname.startsWith(prefix));
 
   return (
     <div className="App">
@@ -76,7 +84,7 @@ function Layout() {
         } />
       </Routes>
 
-      {!sinNav && <Footer />}
+      {!sinFooter && <Footer />}
     </div>
   );
 }
