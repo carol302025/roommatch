@@ -125,6 +125,47 @@
     color: #1e293b;
 }
 
+.perfil-pub-habitos {
+    width: 100%;
+    margin-top: 0.5rem;
+    border-top: 1.5px solid #f1f5f9;
+    padding-top: 1.25rem;
+}
+
+.perfil-pub-habitos-titulo {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+}
+
+.perfil-pub-bio {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.55;
+    margin-bottom: 0.85rem;
+    text-align: center;
+}
+
+.perfil-pub-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.pub-chip {
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    color: #334155;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.35rem 0.85rem;
+    border-radius: 50px;
+}
+
 @media (max-width: 520px) {
     .perfil-pub-page { padding: 1.5rem 1rem 3rem; }
     .perfil-pub-card { padding: 2rem 1.25rem; }

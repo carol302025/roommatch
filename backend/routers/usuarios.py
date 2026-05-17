@@ -309,6 +309,26 @@ def perfil_publico(usuario_id: int, db: Session = Depends(get_db)):
     ).first()
     if not usuario:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Usuario no encontrado")
+
+    perfil_hab = None
+    if usuario.rol == RolUsuario.inquilino:
+        p = db.query(PerfilInquilino).filter(PerfilInquilino.usuario_id == usuario_id).first()
+        if p:
+            perfil_hab = {
+                "edad": p.edad,
+                "bio": p.bio,
+                "genero": p.genero,
+                "fumador": p.fumador,
+                "tiene_mascota": p.tiene_mascota,
+                "estilo_vida": p.estilo_vida,
+                "tipo_persona": p.tipo_persona,
+                "nivel_ruido": p.nivel_ruido,
+                "nivel_orden": p.nivel_orden,
+                "horario": p.horario,
+                "tiene_visitas": p.tiene_visitas,
+                "sociabilidad": p.sociabilidad,
+            }
+
     return {
         "id": usuario.id,
         "nombre": usuario.nombre,
@@ -317,6 +337,7 @@ def perfil_publico(usuario_id: int, db: Session = Depends(get_db)):
         "telefono": usuario.telefono,
         "created_at": usuario.created_at,
         "email_verificado": usuario.email_verificado,
+        "perfil_inquilino": perfil_hab,
     }
 
 
