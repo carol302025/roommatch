@@ -250,19 +250,17 @@
 .aviso-antiestafa {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    background: #fffbeb;
-    border: 1.5px solid #fcd34d;
-    border-radius: 12px;
-    padding: 0.85rem 1.25rem;
-    font-size: 0.85rem;
-    color: #92400e;
-    font-weight: 500;
-    max-width: 700px;
+    gap: 0.65rem;
+    max-width: 600px;
     margin: 0 auto 2rem;
+    font-size: 0.82rem;
+    font-style: italic;
+    font-weight: 600;
+    color: #b45309;
     line-height: 1.5;
+    text-align: left;
 }
-.aviso-icon { font-size: 1.1rem; flex-shrink: 0; }
+.aviso-icon { font-size: 1rem; flex-shrink: 0; }
 
 /* ── TAGLINE ── */
 .home-tagline {
