@@ -168,6 +168,12 @@ function Home() {
                 {/* Tagline */}
                 <p className="home-tagline">RoomMatch te conecta con personas que comparten tu estilo de vida, intereses y presupuesto. El hogar perfecto empieza con la compañía perfecta.</p>
 
+                {/* Aviso antiestafa */}
+                <div className="aviso-antiestafa">
+                    <span className="aviso-icon">⚠️</span>
+                    <span>Nunca pagues una fianza por adelantado antes de visitar la habitación en persona. RoomMatch no solicita ningún pago.</span>
+                </div>
+
                 {/* Chips de ciudad */}
                 <div className="ciudad-chips">
                     {CIUDADES.map(c => (
